@@ -7,7 +7,7 @@ import lk.ac.vau.fas.ict.model.Course;
 
 @RestController
 @RequestMapping("/course")
-public class CourseController {
+public class CourseController extends CRUDController<String,Course>{
 	
 	public CourseController ()
 	{
