@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -35,6 +36,15 @@ public class CRUDController<K,T> {
 	        return object; // Return the newly added object
 	    }
 	
+	@PutMapping("/update/{id}")
+	public String updateOne(@PathVariable("id") K id, @RequestBody T objectNew) {
+	    if (objects.get(id) != null) {
+	        objects.put(id, objectNew);
+	        return "Updated object details.";
+	    }
+	    return "404 couldn't find the object.";
+	}
+		
 	
 	
 }
