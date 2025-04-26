@@ -3,6 +3,7 @@ package lk.ac.vau.fas.ict.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,6 +46,17 @@ public class CRUDController<K,T> {
 	    return "404 couldn't find the object.";
 	}
 		
-	
+	//delete
+		@DeleteMapping("/delete/{id}")
+		public String deleteOne(@PathVariable("id") K id)
+		{
+			if(objects.get(id) != null)
+			{
+				objects.remove(id);
+				return "The Object Deleted Sucessfully.";
+			}
+		
+		return "404 couldn't find the student";
+		}
 	
 }
